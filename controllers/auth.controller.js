@@ -29,13 +29,13 @@ const register = async (req, res) => {
         return res.status(400).json({ message: "Se necesita un usuario." });
 
     if (!usuario.nombre || !usuario.apellido || !usuario.mail || !usuario.password)
-        return res.status(400).json({ message: "Faltan campos por llenar" });
+        return res.status(400).json({ message: "Faltan campos por llenar." });
 
     try {
         const usuarioExistente = await UsuariosService.getUsuarioByEmail(email);
 
         if (usuarioExistente)
-            return res.json({ message: "Ya existe un usuario con este mail" });
+            return res.json({ message: "Ya existe un usuario con este mail." });
 
     const salt = await bcrypt.genSalt(saltRounds);
     const hash = await bcrypt.hash(password, salt);
@@ -44,7 +44,7 @@ const register = async (req, res) => {
     usuario.password = hash; //REASIGNA LA CONTRA PARA GUARDAR EN BDD
     
         await UsuariosService.createUsuario(usuario);
-        res.status(201).json({ message: "Usuario creado con éxito" });
+        res.status(201).json({ message: "Usuario creado con éxito." });
     
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -81,7 +81,7 @@ const login = async (req, res) => {
 
     const usuarioExistente = await UsuariosService.getUsuarioByEmail(email);
         if (!usuarioExistente)
-            return res.status(404).json({ message: "Usuario con email no encontrado" });
+            return res.status(404).json({ message: "Usuario con email no encontrado." });
 
     const match = await bcrypt.compare(password, usuario.password);
 
