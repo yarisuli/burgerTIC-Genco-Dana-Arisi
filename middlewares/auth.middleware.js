@@ -14,6 +14,11 @@ export const verifyToken = async (req, res, next) => {
     
         Recordar también que si sucede cualquier error en este proceso, deben devolver un error 401 (Unauthorized)
     */
+
+    
+    
+
+    
 };
 
 export const verifyAdmin = async (req, res, next) => {

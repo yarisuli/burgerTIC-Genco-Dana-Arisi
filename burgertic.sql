@@ -30,7 +30,7 @@ CREATE TABLE public.pedidos (
 );
 
 
-ALTER TABLE public.pedidos OWNER TO burgertic_owner;
+ALTER TABLE public.pedidos OWNER TO "burgerTICdb_owner";
 
 CREATE SEQUENCE public.pedidos_id_seq
     AS integer
@@ -41,7 +41,7 @@ CREATE SEQUENCE public.pedidos_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.pedidos_id_seq OWNER TO burgertic_owner;
+ALTER SEQUENCE public.pedidos_id_seq OWNER TO "burgerTICdb_owner";
 
 ALTER SEQUENCE public.pedidos_id_seq OWNED BY public.pedidos.id;
 
@@ -54,7 +54,7 @@ CREATE TABLE public.pedidos_platos (
 );
 
 
-ALTER TABLE public.pedidos_platos OWNER TO burgertic_owner;
+ALTER TABLE public.pedidos_platos OWNER TO "burgerTICdb_owner";
 
 CREATE SEQUENCE public.pedidos_platos_id_seq
     AS integer
@@ -65,7 +65,7 @@ CREATE SEQUENCE public.pedidos_platos_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.pedidos_platos_id_seq OWNER TO burgertic_owner;
+ALTER SEQUENCE public.pedidos_platos_id_seq OWNER TO "burgerTICdb_owner";
 
 ALTER SEQUENCE public.pedidos_platos_id_seq OWNED BY public.pedidos_platos.id;
 
@@ -79,7 +79,7 @@ CREATE TABLE public.platos (
 );
 
 
-ALTER TABLE public.platos OWNER TO burgertic_owner;
+ALTER TABLE public.platos OWNER TO "burgerTICdb_owner";
 
 CREATE SEQUENCE public.platos_id_seq
     AS integer
@@ -90,7 +90,7 @@ CREATE SEQUENCE public.platos_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.platos_id_seq OWNER TO burgertic_owner;
+ALTER SEQUENCE public.platos_id_seq OWNER TO "burgerTICdb_owner";
 
 ALTER SEQUENCE public.platos_id_seq OWNED BY public.platos.id;
 
@@ -105,7 +105,7 @@ CREATE TABLE public.usuarios (
 );
 
 
-ALTER TABLE public.usuarios OWNER TO burgertic_owner;
+ALTER TABLE public.usuarios OWNER TO "burgerTICdb_owner";
 
 CREATE SEQUENCE public.usuarios_id_seq
     AS integer
@@ -116,7 +116,7 @@ CREATE SEQUENCE public.usuarios_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.usuarios_id_seq OWNER TO burgertic_owner;
+ALTER SEQUENCE public.usuarios_id_seq OWNER TO "burgerTICdb_owner";
 
 ALTER SEQUENCE public.usuarios_id_seq OWNED BY public.usuarios.id;
 
