@@ -88,7 +88,7 @@ const login = async (req, res) => {
         if (!match)
             return res.status(400).json({message: message.error});
     
-    const token = await signToken(payload, "secret", { expiresIn: "1h" });
+    const token = await jwt.sign(payload, "secret", { expiresIn: "1h" });
     return res.status(200).json({ usuario, token });
 
 
