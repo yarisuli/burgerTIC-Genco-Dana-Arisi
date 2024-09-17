@@ -1,9 +1,9 @@
 {
   "name": "burgertic",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "type": "module",
+  "express": "express",
   "scripts": {
     "start": "node index.js",
     "dev": "npx nodemon index.js"
@@ -12,7 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
@@ -20,5 +19,14 @@
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.10.3",
     "pg": "^8.12.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yarisuli/burgerTIC-Genco-Dana-Arisi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yarisuli/burgerTIC-Genco-Dana-Arisi/issues"
+  },
+  "homepage": "https://github.com/yarisuli/burgerTIC-Genco-Dana-Arisi#readme",
+  "description": ""
 }

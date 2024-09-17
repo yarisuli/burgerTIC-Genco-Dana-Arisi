@@ -1,3 +1,4 @@
+import pedidosService from "../services/pedidos.service.js";
 import PedidosService from "../services/pedidos.service.js";
 
 const getPedidos = async (req, res) => {
@@ -8,8 +9,16 @@ const getPedidos = async (req, res) => {
             1. Utilizar el servicio de pedidos para obtener todos los pedidos
             2. Devolver un json con los pedidos (status 200)
             3. Devolver un mensaje de error si algo falló (status 500)
-        
+            LISTO!!
     */
+
+    try {
+        const pedidos = await PedidosService.getPedidos();
+        return res.status(200).json(pedidos);
+
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
 };
 
 const getPedidosByUser = async (req, res) => {
@@ -21,8 +30,24 @@ const getPedidosByUser = async (req, res) => {
             2. Si el usuario no tiene pedidos, devolver un mensaje de error (status 404)
             3. Si el usuario tiene pedidos, devolver un json con los pedidos (status 200)
             4. Devolver un mensaje de error si algo falló (status 500)
+            LISTO!!
         
     */
+
+    const usuario = req.body;
+    try {
+        
+        const pedidosUsuario = await PedidosService.getPedidosByUser(usuario);
+
+        if(!pedidosUsuario)
+            return res.status(404).json("El usuario no tiene pedidos.");
+        
+        return res.status(200).json({pedidosUsuario});
+
+    } catch (error){
+        res.status(500).json({ message: error.message });
+
+    }
 };
 
 const getPedidoById = async (req, res) => {
@@ -36,6 +61,20 @@ const getPedidoById = async (req, res) => {
             4. Devolver un mensaje de error si algo falló (status 500)
         
     */
+
+    const id = req.params; 
+
+    try {
+        const pedidoId = await PedidosService.getPedidoById(id);
+
+        if(!pedidoId)
+            return res.status(404).json({message: message.error});
+
+        return res.status(200).json({pedidoId});
+
+    }catch (error){
+        res.status(500).json({ message: error.message });
+    }
 };
 
 const createPedido = async (req, res) => {
@@ -53,6 +92,13 @@ const createPedido = async (req, res) => {
             8. Devolver un mensaje de error si algo falló (status 500)
         
     */
+
+    // const platos = req.body.platos
+
+    // if(!platos) 
+    //     return res.status(400).json({ message: "Se necesita el campo platos." });
+
+    
 };
 
 const aceptarPedido = async (req, res) => {

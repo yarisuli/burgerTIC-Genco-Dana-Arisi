@@ -28,24 +28,24 @@ const register = async (req, res) => {
     if (!usuario)
         return res.status(400).json({ message: "Se necesita un usuario." });
 
-    if (!usuario.nombre || !usuario.apellido || !usuario.mail || !usuario.password)
+    if (!usuario.nombre || !usuario.apellido || !usuario.email || !usuario.password)
         return res.status(400).json({ message: "Faltan campos por llenar." });
 
     try {
         const usuarioExistente = await UsuariosService.getUsuarioByEmail(email);
 
         if (usuarioExistente)
-            return res.json({ message: "Ya existe un usuario con este mail." });
+            return res.status(400).json({ message: "Ya existe un usuario con este mail." });
 
-    const salt = await bcrypt.genSalt(saltRounds);
-    const hash = await bcrypt.hash(password, salt);
-    console.log(hash); //PARA VER SI SE CREO BIEN
+        const salt = await bcrypt.genSalt(saltRounds);
+        const hash = await bcrypt.hash(password, salt);
+        console.log(hash); 
 
-    usuario.password = hash; //REASIGNA LA CONTRA PARA GUARDAR EN BDD
-    
+        usuario.password = hash;
+
         await UsuariosService.createUsuario(usuario);
         res.status(201).json({ message: "Usuario creado con éxito." });
-    
+
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -72,27 +72,30 @@ const login = async (req, res) => {
     const usuario = req.body;
     const email = req.body.email;
     const password = req.body.password;
-    const { payload } = req.body;
+    // const { payload } = req.body;
 
 
-    if (!email || !password) return res.status(400).json({ message: "Se necesita un email y una contraseña." });
+    if (!email || !password) 
+        return res.status(400).json({ message: "Se necesita un email y una contraseña." });
 
     try {
 
-    const usuarioExistente = await UsuariosService.getUsuarioByEmail(email);
+        const usuarioExistente = await UsuariosService.getUsuarioByEmail(email);
+        console.log(usuarioExistente);
+
         if (!usuarioExistente)
             return res.status(404).json({ message: "Usuario con email no encontrado." });
 
-    const match = await bcrypt.compare(password, usuario.password);
+        const match = await bcrypt.compare(password, usuarioExistente.password);
 
         if (!match)
-            return res.status(400).json({message: message.error});
-    
-    const token = await jwt.sign(payload, "secret", { expiresIn: "1h" });
-    return res.status(200).json({ usuario, token });
+            return res.status(400).json({ message: message.error });
+
+        const token = await jwt.sign({ id: usuarioExistente.id }, "secret", { expiresIn: "1h" });
+        return res.status(200).json({ usuario, token });
 
 
-    }catch (error) {
+    } catch (error) {
         res.status(500).json({ message: error.message });
     }
 
