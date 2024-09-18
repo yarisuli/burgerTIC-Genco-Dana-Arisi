@@ -1,4 +1,3 @@
-import pedidosService from "../services/pedidos.service.js";
 import PedidosService from "../services/pedidos.service.js";
 
 const getPedidos = async (req, res) => {
@@ -17,6 +16,7 @@ const getPedidos = async (req, res) => {
         return res.status(200).json(pedidos);
 
     } catch (error) {
+        console.error(error)
         res.status(500).json({ message: error.message });
     }
 };
@@ -27,24 +27,20 @@ const getPedidosByUser = async (req, res) => {
         Recordar que para cumplir con toda la funcionalidad deben:
 
             1. Utilizar el servicio de pedidos para obtener los pedidos del usuario
-            2. Si el usuario no tiene pedidos, devolver un mensaje de error (status 404)
             3. Si el usuario tiene pedidos, devolver un json con los pedidos (status 200)
             4. Devolver un mensaje de error si algo falló (status 500)
             LISTO!!
         
     */
 
-    const usuario = req.body;
     try {
+        const pedidosUsuario = await PedidosService.getPedidosByUser(req.id);
         
-        const pedidosUsuario = await PedidosService.getPedidosByUser(usuario);
-
-        if(!pedidosUsuario)
-            return res.status(404).json("El usuario no tiene pedidos.");
-        
-        return res.status(200).json({pedidosUsuario});
+        return res.status(200).json(pedidosUsuario);
 
     } catch (error){
+        console.error(error);
+
         res.status(500).json({ message: error.message });
 
     }
@@ -62,13 +58,13 @@ const getPedidoById = async (req, res) => {
         
     */
 
-    const id = req.params; 
+    const id = parseInt(req.params.id); 
 
     try {
         const pedidoId = await PedidosService.getPedidoById(id);
 
         if(!pedidoId)
-            return res.status(404).json({message: message.error});
+            return res.status(404).json({message: "El pedido no existe."});
 
         return res.status(200).json({pedidoId});
 
@@ -93,12 +89,32 @@ const createPedido = async (req, res) => {
         
     */
 
-    // const platos = req.body.platos
+    // const userId = req.params.id;
+    const platos = req.body.platos;
 
-    // if(!platos) 
-    //     return res.status(400).json({ message: "Se necesita el campo platos." });
+    if(!platos) 
+        return res.status(400).json({ message: "Se necesita el campo platos." });
 
-    
+    if (!Array.isArray(platos))
+        return res.status(400).json({message: "El campo debe ser un array."});
+
+    if (platos.length < 1)
+        return res.status(400).json({message: "El pedido debe tener al menos un plato."});
+
+    for (const plato of platos) {
+        if (!plato.id || !plato.cantidad)
+            return res.status(400).json({ message: "Cada producto debe tener un id y una cantidad."});
+    }
+
+    try{
+
+        const pedido = await PedidosService.createPedido(req.id, platos);
+        res.status(201).json({message: "Pedido creado existosamente."});
+
+    }catch (error){ 
+        res.status(500).json({ message: error.message });
+    }
+
 };
 
 const aceptarPedido = async (req, res) => {

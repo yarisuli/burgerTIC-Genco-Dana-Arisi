@@ -69,19 +69,15 @@ const login = async (req, res) => {
         
     */
 
-    const usuario = req.body;
     const email = req.body.email;
     const password = req.body.password;
-    // const { payload } = req.body;
-
 
     if (!email || !password) 
         return res.status(400).json({ message: "Se necesita un email y una contraseña." });
 
-    try {
+    try {  
 
         const usuarioExistente = await UsuariosService.getUsuarioByEmail(email);
-        console.log(usuarioExistente);
 
         if (!usuarioExistente)
             return res.status(404).json({ message: "Usuario con email no encontrado." });
@@ -91,8 +87,14 @@ const login = async (req, res) => {
         if (!match)
             return res.status(400).json({ message: message.error });
 
-        const token = await jwt.sign({ id: usuarioExistente.id }, "secret", { expiresIn: "1h" });
-        return res.status(200).json({ usuario, token });
+        const token = await jwt.sign({ id: usuarioExistente.id }, "secret", { expiresIn: "30m" });
+        return res.status(200).json({ usuario: {
+            id: usuarioExistente.id,
+            email: usuarioExistente.email,
+            nombre: usuarioExistente.nombre,
+            apellido: usuarioExistente.apellido,
+            admin: usuarioExistente.admin,
+        }, token });
 
 
     } catch (error) {
