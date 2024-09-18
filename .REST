@@ -42,9 +42,16 @@ Content-Type: application/json
 ### TRAER TODOS LOS PEDIDOS
 
 GET http://localhost:9000/pedidos HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2NjY1MDI0LCJleHAiOjE3MjY2NjY4MjR9.MTBckcI116AmOuo6fMS1ASAu5HzjHnyEwSkenoj89D0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2NjgyNDM3LCJleHAiOjE3MjY2ODQyMzd9.-W3P3c127u3dsjFTTdGYkr6BM6VboltcfQWypXxaYpk
 
 ### TRAER TODOS LOS PEDIDOS
 
 GET http://localhost:9000/pedidos/usuario HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2NjY1MDI0LCJleHAiOjE3MjY2NjY4MjR9.MTBckcI116AmOuo6fMS1ASAu5HzjHnyEwSkenoj89D0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2Njg0MzQwLCJleHAiOjE3MjY2ODYxNDB9.KH39l8WSzX1IG7n1gko_NDVTraId29yG-OSY2zwHLNk
+### BORRAR PEDIDO POR ID
+DELETE http://localhost:9000/pedidos/2 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2Njg0MzQwLCJleHAiOjE3MjY2ODYxNDB9.KH39l8WSzX1IG7n1gko_NDVTraId29yG-OSY2zwHLNk
+
+### ACEPTAR PEDIDO
+PUT http://localhost:9000/pedidos/1/aceptar HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2Njg0MzQwLCJleHAiOjE3MjY2ODYxNDB9.KH39l8WSzX1IG7n1gko_NDVTraId29yG-OSY2zwHLNk

@@ -89,7 +89,6 @@ const createPedido = async (req, res) => {
         
     */
 
-    // const userId = req.params.id;
     const platos = req.body.platos;
 
     if(!platos) 
@@ -131,6 +130,33 @@ const aceptarPedido = async (req, res) => {
             7. Devolver un mensaje de error si algo falló (status 500)
         
     */
+
+    // const id = parseInt(req.params.id); 
+
+    // const pedidoAceptar = await PedidosService.getPedidoById(id);
+        
+    // if(!pedidoAceptar || pedidoAceptar.length === 0)
+    //     return res.status(404).json({message: "El pedido no existe."});
+
+    // const pedido = pedidoAceptar[0];
+    // console.log(pedido);
+    // console.log(pedido.estado);
+
+    // try {
+
+    //     if (pedido.estado !== 'pendiente')
+    //         return res.status(400).json({message: "El pedido no esta en estado pendiente."});
+
+    //     pedido.estado = 'aceptado';
+    //     const acualizar = await PedidosService.updatePedido(pedido);
+
+    //     console.log(pedido); 
+
+    //     res.status(200).json({message: "Se aceptó el pedido."});
+
+    // } catch (error) {
+    //     res.status(500).json({ message: error.message });
+    // }
 };
 
 const comenzarPedido = async (req, res) => {
@@ -147,6 +173,15 @@ const comenzarPedido = async (req, res) => {
             7. Devolver un mensaje de error si algo falló (status 500)
         
     */
+
+    const id = parseInt(req.params.id); 
+
+    const pedido = await PedidosService.getPedidoById(id);
+
+    if(!pedido)
+        return res.status(404).json({message: "El pedido no existe."})
+
+
 };
 
 const entregarPedido = async (req, res) => {
@@ -163,6 +198,13 @@ const entregarPedido = async (req, res) => {
             7. Devolver un mensaje de error si algo falló (status 500)
         
     */
+    
+    const id = parseInt(req.params.id); 
+
+    const pedido = await PedidosService.getPedidoById(id);
+
+    if(!pedido)
+        return res.status(404).json({message: "El pedido no existe."})
 };
 
 const deletePedido = async (req, res) => {
@@ -177,6 +219,21 @@ const deletePedido = async (req, res) => {
             5. Devolver un mensaje de error si algo falló (status 500)
         
     */
+    
+    const id = parseInt(req.params.id); 
+
+    const pedido = await PedidosService.getPedidoById(id);
+
+    if(!pedido)
+        return res.status(404).json({message: "El pedido no existe."})
+
+    try {
+        const eliminar = await PedidosService.deletePedido(id);
+        res.status(200).json({message: "El pedido se eliminó correctamente."});
+
+    } catch (error){
+        res.status(500).json({message: error.message});
+    }
 };
 
 export default {

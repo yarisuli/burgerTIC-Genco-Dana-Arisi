@@ -25,19 +25,16 @@ export const verifyToken = async (req, res, next) => {
             return res.status(400).json({message: "Formato invalido de token."});
 
         const payload = await jwt.verify(token, "secret");
-        console.log(payload);
 
         if (!payload.id) 
             return res.status(400).json({ message: "El token no contiene un ID de usuario."});
     
         req.id = parseInt(payload.id);
 
-        console.log(req.id);
-
         next();
 
     } catch (error){
-        res.status(500).json({message: message.error});
+        res.status(500).json({ message: error.message });
     }
 
 };
@@ -52,16 +49,15 @@ export const verifyAdmin = async (req, res, next) => {
             2. Si no lo es, devolver un error 403 (Forbidden)
     
     */
-    const id = req.params.id; 
 
     try {
-        const usuario = await UsuariosService.getUsuarioById(id);
+        const usuario = await UsuariosService.getUsuarioById(req.id);
         if (!usuario.admin) 
             return res.status(403).json({ message: "Acceso denegado. No eres administrador." });
 
         next();
     
     } catch (error) {
-        return res.status(500).json({ message: error.message});
+        res.status(500).json({ message: error.message });
     }
 };

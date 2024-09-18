@@ -88,6 +88,9 @@ const login = async (req, res) => {
             return res.status(400).json({ message: message.error });
 
         const token = await jwt.sign({ id: usuarioExistente.id }, "secret", { expiresIn: "30m" });
+        
+        console.log(token); 
+        
         return res.status(200).json({ usuario: {
             id: usuarioExistente.id,
             email: usuarioExistente.email,
