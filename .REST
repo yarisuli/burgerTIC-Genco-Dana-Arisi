@@ -42,16 +42,25 @@ Content-Type: application/json
 ### TRAER TODOS LOS PEDIDOS
 
 GET http://localhost:9000/pedidos HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2NjgyNDM3LCJleHAiOjE3MjY2ODQyMzd9.-W3P3c127u3dsjFTTdGYkr6BM6VboltcfQWypXxaYpk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2NzU1MDc5LCJleHAiOjE3MjY3NTY4Nzl9.lB-fuKs3bZpDnflqc7T4cEOiaiP_TfjLCC3FR6adMTU
 
-### TRAER TODOS LOS PEDIDOS
+### TRAER TODOS LOS PEDIDOS DE UN USUARIO
 
 GET http://localhost:9000/pedidos/usuario HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2Njg0MzQwLCJleHAiOjE3MjY2ODYxNDB9.KH39l8WSzX1IG7n1gko_NDVTraId29yG-OSY2zwHLNk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2NzU1MDc5LCJleHAiOjE3MjY3NTY4Nzl9.lB-fuKs3bZpDnflqc7T4cEOiaiP_TfjLCC3FR6adMTU
+
 ### BORRAR PEDIDO POR ID
 DELETE http://localhost:9000/pedidos/2 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2Njg0MzQwLCJleHAiOjE3MjY2ODYxNDB9.KH39l8WSzX1IG7n1gko_NDVTraId29yG-OSY2zwHLNk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2NzU1MDc5LCJleHAiOjE3MjY3NTY4Nzl9.lB-fuKs3bZpDnflqc7T4cEOiaiP_TfjLCC3FR6adMTU
 
 ### ACEPTAR PEDIDO
 PUT http://localhost:9000/pedidos/1/aceptar HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2Njg0MzQwLCJleHAiOjE3MjY2ODYxNDB9.KH39l8WSzX1IG7n1gko_NDVTraId29yG-OSY2zwHLNk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2NzU1MDc5LCJleHAiOjE3MjY3NTY4Nzl9.lB-fuKs3bZpDnflqc7T4cEOiaiP_TfjLCC3FR6adMTU
+
+### COMENZAR PEDIDO
+PUT http://localhost:9000/pedidos/1/comenzar HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2NzU1MDc5LCJleHAiOjE3MjY3NTY4Nzl9.lB-fuKs3bZpDnflqc7T4cEOiaiP_TfjLCC3FR6adMTU
+
+### ENTREGAR PEDIDO
+PUT http://localhost:9000/pedidos/1/entregar HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2NzU1MDc5LCJleHAiOjE3MjY3NTY4Nzl9.lB-fuKs3bZpDnflqc7T4cEOiaiP_TfjLCC3FR6adMTU
