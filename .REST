@@ -12,10 +12,10 @@ POST http://localhost:9000/auth/register HTTP/1.1
 Content-Type: application/json
 
 {
-"nombre": "iara",
-"apellido": "genco", 
-"email": "yarigenco@gmail.com",
-"password": "1234"
+"nombre": "Nico",
+"apellido": "Low", 
+"email": "nico@gmail",
+"password": "1111"
 }
 
 ###LOGIN
@@ -29,38 +29,32 @@ Content-Type: application/json
 
 ### PEDIDOS
 
-
-###CREAR PEDIDO
-POST http://localhost:9000/pedidos/usuario/1 HTTP/1.1
-Content-Type: application/json
-
-{
-    
-    
-}
-
 ### TRAER TODOS LOS PEDIDOS
 
 GET http://localhost:9000/pedidos HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2NzU1MDc5LCJleHAiOjE3MjY3NTY4Nzl9.lB-fuKs3bZpDnflqc7T4cEOiaiP_TfjLCC3FR6adMTU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODQxMTQzLCJleHAiOjE3MjY4NDI5NDN9.iwbrRpByo7Z6pYfY0MboXm5mizlIHjxSE3X1DCPTHnI
 
 ### TRAER TODOS LOS PEDIDOS DE UN USUARIO
 
 GET http://localhost:9000/pedidos/usuario HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2NzU1MDc5LCJleHAiOjE3MjY3NTY4Nzl9.lB-fuKs3bZpDnflqc7T4cEOiaiP_TfjLCC3FR6adMTU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODQxMTQzLCJleHAiOjE3MjY4NDI5NDN9.iwbrRpByo7Z6pYfY0MboXm5mizlIHjxSE3X1DCPTHnI
+
+### TRAER PEDIDO POR ID
+GET http://localhost:9000/pedidos/1 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODQxMTQzLCJleHAiOjE3MjY4NDI5NDN9.iwbrRpByo7Z6pYfY0MboXm5mizlIHjxSE3X1DCPTHnI
 
 ### BORRAR PEDIDO POR ID
 DELETE http://localhost:9000/pedidos/2 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2NzU1MDc5LCJleHAiOjE3MjY3NTY4Nzl9.lB-fuKs3bZpDnflqc7T4cEOiaiP_TfjLCC3FR6adMTU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODQxMTQzLCJleHAiOjE3MjY4NDI5NDN9.iwbrRpByo7Z6pYfY0MboXm5mizlIHjxSE3X1DCPTHnI
 
 ### ACEPTAR PEDIDO
-PUT http://localhost:9000/pedidos/1/aceptar HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2NzU1MDc5LCJleHAiOjE3MjY3NTY4Nzl9.lB-fuKs3bZpDnflqc7T4cEOiaiP_TfjLCC3FR6adMTU
+PUT http://localhost:9000/pedidos/3/aceptar HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODQxMTQzLCJleHAiOjE3MjY4NDI5NDN9.iwbrRpByo7Z6pYfY0MboXm5mizlIHjxSE3X1DCPTHnI
 
 ### COMENZAR PEDIDO
-PUT http://localhost:9000/pedidos/1/comenzar HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2NzU1MDc5LCJleHAiOjE3MjY3NTY4Nzl9.lB-fuKs3bZpDnflqc7T4cEOiaiP_TfjLCC3FR6adMTU
+PUT http://localhost:9000/pedidos/3/comenzar HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODQxMTQzLCJleHAiOjE3MjY4NDI5NDN9.iwbrRpByo7Z6pYfY0MboXm5mizlIHjxSE3X1DCPTHnI
 
 ### ENTREGAR PEDIDO
-PUT http://localhost:9000/pedidos/1/entregar HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2NzU1MDc5LCJleHAiOjE3MjY3NTY4Nzl9.lB-fuKs3bZpDnflqc7T4cEOiaiP_TfjLCC3FR6adMTU
+PUT http://localhost:9000/pedidos/3/entregar HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI2ODQxMTQzLCJleHAiOjE3MjY4NDI5NDN9.iwbrRpByo7Z6pYfY0MboXm5mizlIHjxSE3X1DCPTHnI
